@@ -11,10 +11,12 @@ pub struct UserData {
 }
 
 impl UserData {
+    #[allow(dead_code)]
     pub fn new(name: String, wins: i8, losses: i8) -> UserData {
         UserData { name, wins, losses }
     }
 
+    #[allow(dead_code)]
     pub fn with_name(name: String) -> UserData {
         UserData {
             name,
@@ -23,24 +25,28 @@ impl UserData {
         }
     }
 
-    pub fn from_file(user_name: &str) -> Result<UserData, BoxedError> {
-        get_user_data_from_file(user_name)
+    #[allow(dead_code)]
+    pub async fn from_file(user_name: &str) -> Result<UserData, BoxedError> {
+        get_user_data_from_file(user_name).await
     }
 
     pub fn get_name(&self) -> &str {
         &self.name
     }
 
+    #[allow(dead_code)]
     pub fn record_win(&mut self) {
         self.wins += 1;
     }
 
+    #[allow(dead_code)]
     pub fn record_losses(&mut self) {
         self.losses += 1;
     }
 
-    pub fn save(self) -> Result<(), BoxedError> {
-        save_user_data(self)
+    #[allow(dead_code)]
+    pub async fn save(&self) -> Result<(), BoxedError> {
+        save_user_data(self).await
     }
 }
 

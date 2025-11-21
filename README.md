@@ -17,6 +17,8 @@ This small project demonstrates **real-world Rust application structure** by tac
 3. **Advanced Error Handling:** A robust error system using custom enums (`GameError`) and dynamic boxed errors (
    `BoxedError`) for clean error propagation.
 4. **Idiomatic I/O:** Using the `?` operator and `Result` for safe input handling.
+5. **Asynchronous Programming:** Introduction to `async`/`await` and `tokio` for non-blocking operations.
+6. **Web Integration & Testing:** Basic setup for a local Web API and writing tests with mock inputs.
 
 ---
 
