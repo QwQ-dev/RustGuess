@@ -1,3 +1,4 @@
+use crate::config::settings_handler::SETTINGS;
 use crate::data_handler::{delete_user_data_from_file, get_user_data_from_file};
 use crate::user_data::UserData;
 use axum::extract::Path;
@@ -17,7 +18,9 @@ pub fn get_web_api_router() -> Router {
 
 pub async fn start_web_api_service() {
     let router = get_web_api_router();
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    let listener = tokio::net::TcpListener::bind(&SETTINGS.web_api_address)
+        .await
+        .unwrap();
     println!("Web API started at {}", listener.local_addr().unwrap());
 
     axum::serve(listener, router).await.unwrap();

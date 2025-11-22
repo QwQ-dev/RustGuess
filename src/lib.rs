@@ -1,4 +1,5 @@
 pub mod boxed_error;
+pub mod config;
 pub mod data_handler;
 pub mod game_error;
 pub mod game_handler;

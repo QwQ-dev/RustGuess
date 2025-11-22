@@ -1,4 +1,5 @@
 use crate::boxed_error::get_concrete_error;
+use crate::config::settings_handler::SETTINGS;
 use crate::game_error::GameError;
 use crate::input::InputSource;
 use crate::user_data::UserData;
@@ -63,7 +64,11 @@ pub fn print_welcome_msg(user_data: &UserData) {
 }
 
 pub fn start_game<I: InputSource>(input_source: &mut I, user_data: &mut UserData) {
-    start_game_logic(input_source, user_data, rand::rng().random_range(1..=100));
+    start_game_logic(
+        input_source,
+        user_data,
+        rand::rng().random_range(SETTINGS.min_number..=SETTINGS.max_number),
+    );
 }
 
 pub fn start_game_logic<I: InputSource>(

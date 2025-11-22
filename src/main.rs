@@ -1,3 +1,4 @@
+use rust_guess::config::settings_handler::SETTINGS;
 use rust_guess::game_handler::{
     get_user_data_from_console, handle_input_error, print_welcome_msg, start_game,
 };
@@ -12,6 +13,8 @@ mod user_data;
 
 #[tokio::main]
 async fn main() {
+    let _ = &*SETTINGS;
+
     tokio::spawn(async {
         start_web_api_service().await;
     });
